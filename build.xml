@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<project name="L2Journey" default="cleanup" basedir=".">
+	<description>
+		This file is part of the L2Journey Project project.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+		
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+		
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.
+		
+		Portions of this software are derived from the L2JMobius Project, 
+		shared under the MIT License. The original license terms are preserved where 
+		applicable..
+	</description>
+
+	<property name="build" location="./build" />
+	<property name="build.bin" location="${build}/bin" />
+	<property name="build.dist" location="${build}/dist" />
+	<property name="build.dist.libs" location="${build.dist}/libs" />
+	<property name="build.dist.dbinstaller" location="${build.dist}/db_installer" />
+	<property name="datapack" location="dist" />
+	<property name="libs" location="${datapack}/libs" />
+	<property name="src" location="java" />
+
+	<path id="classpath">
+		<fileset dir="${libs}">
+			<include name="*.jar" />
+			<exclude name="**/*-sources.jar" />
+		</fileset>
+	</path>
+
+	<pathconvert property="manifest.libs" pathsep=" ">
+		<path refid="classpath" />
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*.jar" to="../libs/*.jar" />
+			</chainedmapper>
+		</mapper>
+	</pathconvert>
+
+	<target name="checkRequirements" description="Check Requirements.">
+		<fail message="Ant 1.8.2 is required. But your version is ${ant.version} and if you are using Eclipse probably is outdated.">
+			<condition>
+				<not>
+					<antversion atleast="1.8.2" />
+				</not>
+			</condition>
+		</fail>
+		<available classname="java.util.stream.Stream" property="JDK24.present" />
+		<fail unless="JDK24.present" message="Java 24 is required. But your version is Java ${ant.java.version} and probably JDK is not installed." />
+	</target>
+
+	<target name="init" depends="checkRequirements" description="Create the output directories.">
+		<delete dir="${build.bin}" quiet="true" />
+		<mkdir dir="${build.bin}" />
+	</target>
+
+	<target name="compile" depends="init" description="Compile the source.">
+		<javac srcdir="${src}" classpathref="classpath" destdir="${build.bin}" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="24" target="24" encoding="UTF-8" />
+	</target>
+
+	<target name="jar" depends="compile" description="Create the jar files.">
+		<tstamp>
+			<format property="time.stamp" pattern="yyyy-MM-dd HH:mm:ss z" />
+		</tstamp>
+
+		<jar destfile="${build.dist.libs}/LoginServer.jar" level="9">
+			<fileset dir="${build.bin}">
+				<exclude name="**/dbinstaller**" />
+				<exclude name="**/gameserver/**" />
+			</fileset>
+			<manifest>
+				<attribute name="Build-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${time.stamp}" />
+				<attribute name="Implementation-URL" value="https://www.l2journey.com/forum/" />
+				<attribute name="Class-Path" value="${manifest.libs}" />
+				<attribute name="Main-Class" value="com.l2journey.loginserver.LoginServer" />
+			</manifest>
+		</jar>
+		<jar destfile="${build.dist.libs}/GameServer.jar" level="9">
+			<fileset dir="${build.bin}">
+				<exclude name="**/dbinstaller**" />
+				<exclude name="**/loginserver/**" />
+				<exclude name="**/accountmanager/**" />
+				<exclude name="**/registerserver/**" />
+			</fileset>
+			<manifest>
+				<attribute name="Build-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${time.stamp}" />
+				<attribute name="Implementation-URL" value="https://www.l2journey.com/forum/" />
+				<attribute name="Class-Path" value="${manifest.libs}" />
+				<attribute name="Main-Class" value="com.l2journey.gameserver.GameServer" />
+			</manifest>
+		</jar>
+		<jar destfile="${build.dist.dbinstaller}/Database_Installer_GS.jar" level="9">
+			<fileset dir="${build.bin}">
+				<include name="**/dbinstaller/**" />
+				<include name="**/commons/ui/**" />
+				<include name="**/commons/util/**" />
+				<include name="**/SQLFilter**" />
+				<exclude name="**/LauncherLS*" />
+			</fileset>
+			<manifest>
+				<attribute name="Build-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${time.stamp}" />
+				<attribute name="Class-Path" value="${manifest.libs}" />
+				<attribute name="Implementation-URL" value="http://www.l2journey.com/" />
+				<attribute name="Main-Class" value="com.l2journey.tools.dbinstaller.LauncherGS" />
+			</manifest>
+		</jar>
+		<jar destfile="${build.dist.dbinstaller}/Database_Installer_LS.jar" level="9">
+			<fileset dir="${build.bin}">
+				<include name="**/dbinstaller/**" />
+				<include name="**/commons/ui/**" />
+				<include name="**/commons/util/**" />
+				<include name="**/SQLFilter**" />
+				<exclude name="**/LauncherGS*" />
+			</fileset>
+			<manifest>
+				<attribute name="Build-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${time.stamp}" />
+				<attribute name="Class-Path" value="${manifest.libs}" />
+				<attribute name="Implementation-URL" value="http://www.l2journey.com/" />
+				<attribute name="Main-Class" value="com.l2journey.tools.dbinstaller.LauncherLS" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="adding-core" depends="jar" description="Adding the compiled jars to the Zip file.">
+		<zip destfile="${build}/L2Journey.zip" basedir="${build.dist}" level="9" />
+	</target>
+
+	<target name="adding-datapack" depends="adding-core" description="Updating the Zip file with datapack content.">
+		<zip destfile="${build}/L2Journey.zip" basedir="${datapack}" excludes="**/*-sources.jar" update="true" level="9" />
+	</target>
+
+	<target name="adding-readme" depends="adding-datapack" description="Adding readme.txt to the Zip file.">
+		<zip destfile="${build}/L2Journey.zip" basedir="." includes="readme.txt" update="true" level="9" />
+	</target>
+
+	<target name="cleanup" depends="adding-readme" description="Cleaning the build folder.">
+		<delete dir="${build.bin}" />
+		<delete dir="${build.dist}" />
+	</target>
+</project>
