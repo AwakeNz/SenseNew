@@ -101,6 +101,7 @@ import com.l2journey.gameserver.data.xml.SkillLearnData;
 import com.l2journey.gameserver.data.xml.SkillTreeData;
 import com.l2journey.gameserver.data.xml.SpawnData;
 import com.l2journey.gameserver.data.xml.StaticObjectData;
+import com.l2journey.gameserver.data.xml.TalentData;
 import com.l2journey.gameserver.data.xml.TransformData;
 import com.l2journey.gameserver.data.xml.UIData;
 import com.l2journey.gameserver.geoengine.GeoEngine;
@@ -232,6 +233,7 @@ public class GameServer
 		SkillTreeData.getInstance();
 		SkillData.getInstance();
 		PetSkillData.getInstance();
+		TalentData.getInstance();
 		
 		printSection("Items");
 		ItemData.getInstance();

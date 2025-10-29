@@ -1,0 +1,109 @@
+<html>
+<body>
+<br>
+<center>
+<table width=750 border=0 cellpadding=0 cellspacing=0>
+<tr><td width=750 height=50 align=center>
+<font color="LEVEL">═══════════ TALENT SYSTEM ═══════════</font>
+</td></tr>
+</table>
+
+<!-- Points Display -->
+<table width=750 border=0 cellpadding=5 cellspacing=2 bgcolor=111111>
+<tr>
+<td width=250 align=center height=30>
+<font color="FFFFFF">Available Points</font><br>
+<font color="00FF00" size="+1">%available%</font>
+</td>
+<td width=250 align=center height=30>
+<font color="FFFFFF">Pending Points</font><br>
+<font color="FFFF00" size="+1">%pending%</font>
+</td>
+<td width=250 align=center height=30>
+<font color="FFFFFF">Total Spent</font><br>
+<font color="LEVEL" size="+1">%spent_total%/45</font>
+</td>
+</tr>
+</table>
+
+<br>
+
+<!-- Action Buttons -->
+<table width=750 border=0 cellpadding=2 cellspacing=5>
+<tr>
+<td width=375 align=center>
+<button value="Claim Pending Points" action="bypass _bbstalent_claim" width=180 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+</td>
+<td width=375 align=center>
+<button value="Reset All Talents" action="bypass _bbstalent_reset" width=180 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+</td>
+</tr>
+</table>
+
+<br1>
+
+<!-- POWER Branch -->
+<table width=750 border=0 cellpadding=8 cellspacing=2 bgcolor=331111>
+<tr>
+<td width=500 height=60>
+<font color="FF6666" size="+1">⚔ POWER BRANCH</font><br>
+<font color="B09878">Combat-focused offensive bonuses</font><br>
+<font color="LEVEL">Points Spent: %spent_power%/15</font>
+</td>
+<td width=250 align=center>
+<button value="View Power Talents" action="bypass _bbstalent_branch power" width=160 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+</td>
+</tr>
+</table>
+
+<br>
+
+<!-- MASTERY Branch -->
+<table width=750 border=0 cellpadding=8 cellspacing=2 bgcolor=113311>
+<tr>
+<td width=500 height=60>
+<font color="66FF66" size="+1">★ MASTERY BRANCH</font><br>
+<font color="B09878">Advanced stats and special effects</font><br>
+<font color="LEVEL">Points Spent: %spent_mastery%/15</font>
+</td>
+<td width=250 align=center>
+<button value="View Mastery Talents" action="bypass _bbstalent_branch mastery" width=160 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+</td>
+</tr>
+</table>
+
+<br>
+
+<!-- PROTECTION Branch -->
+<table width=750 border=0 cellpadding=8 cellspacing=2 bgcolor=111133>
+<tr>
+<td width=500 height=60>
+<font color="6666FF" size="+1">🛡 PROTECTION BRANCH</font><br>
+<font color="B09878">Defensive resistances and survivability</font><br>
+<font color="LEVEL">Points Spent: %spent_protection%/15</font>
+</td>
+<td width=250 align=center>
+<button value="View Protection Talents" action="bypass _bbstalent_branch protection" width=160 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<!-- Info Box -->
+<table width=750 border=0 cellpadding=5 cellspacing=0 bgcolor=222222>
+<tr><td width=750 align=center height=25>
+<font color="LEVEL">How to Get Talent Points?</font>
+</td></tr>
+<tr><td width=750 align=center>
+<font color="B09878">
+Earn points by gaining 100% XP at Level 80+<br>
+Each full XP bar = 1 Talent Point<br>
+Maximum 45 points total (15 per branch)
+</font>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

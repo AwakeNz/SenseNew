@@ -142,6 +142,7 @@ import handlers.admincommandhandlers.AdminSkill;
 import handlers.admincommandhandlers.AdminSpawn;
 import handlers.admincommandhandlers.AdminSummon;
 import handlers.admincommandhandlers.AdminSuperHaste;
+import handlers.admincommandhandlers.AdminTalents;
 import handlers.admincommandhandlers.AdminTarget;
 import handlers.admincommandhandlers.AdminTargetSay;
 import handlers.admincommandhandlers.AdminTeleport;
@@ -205,12 +206,15 @@ import handlers.communityboard.HomepageBoard;
 import handlers.communityboard.MailBoard;
 import handlers.communityboard.MemoBoard;
 import handlers.communityboard.RegionBoard;
+import handlers.communityboard.TalentBoard;
 import handlers.itemhandlers.BeastSoulShot;
 import handlers.itemhandlers.BeastSpiritShot;
 import handlers.itemhandlers.BlessedSpiritShot;
 import handlers.itemhandlers.Book;
 import handlers.itemhandlers.Bypass;
 import handlers.itemhandlers.Calculator;
+import handlers.itemhandlers.TalentResetAll;
+import handlers.itemhandlers.TalentResetSingle;
 import handlers.itemhandlers.CharmOfCourage;
 import handlers.itemhandlers.Disguise;
 import handlers.itemhandlers.Elixir;
@@ -302,6 +306,7 @@ import handlers.voicedcommandhandlers.OfflinePlay;
 import handlers.voicedcommandhandlers.Online;
 import handlers.voicedcommandhandlers.Panel;
 import handlers.voicedcommandhandlers.Premium;
+import handlers.voicedcommandhandlers.TalentCommand;
 import handlers.voicedcommandhandlers.Wedding;
 
 /**
@@ -430,6 +435,7 @@ public class MasterHandler
 			AdminSpawn.class,
 			AdminSummon.class,
 			AdminSuperHaste.class,
+			AdminTalents.class,
 			AdminTarget.class,
 			AdminTargetSay.class,
 			AdminTeleport.class,
@@ -501,6 +507,7 @@ public class MasterHandler
 			MailBoard.class,
 			MemoBoard.class,
 			RegionBoard.class,
+			TalentBoard.class,
 		},
 		{
 			// Item Handlers
@@ -533,6 +540,8 @@ public class MasterHandler
 			SpecialXMas.class,
 			SpiritShot.class,
 			SummonItems.class,
+			TalentResetAll.class,
+			TalentResetSingle.class,
 			TeleportBookmark.class,
 		},
 		{
@@ -579,6 +588,7 @@ public class MasterHandler
 			Config.ENABLE_ONLINE_COMMAND ? Online.class : null,
 			Config.PREMIUM_SYSTEM_ENABLED ? Premium.class : null,
 			Config.AUTO_POTIONS_ENABLED ? AutoPotion.class : null,
+			TalentCommand.class,
 		},
 		{
 			// Target Handlers

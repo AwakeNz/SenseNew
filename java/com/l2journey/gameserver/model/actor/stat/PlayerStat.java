@@ -87,18 +87,52 @@ public class PlayerStat extends PlayableStat
 	public boolean addExp(long value)
 	{
 		final Player player = getActiveChar();
-		
+
 		// Allowed to gain exp?
 		if (!getActiveChar().getAccessLevel().canGainExp())
 		{
 			return false;
 		}
-		
+
+		// Talent Point Earning: Check for XP overflow at level 80+
+		if ((player.getLevel() >= 80) && (value > 0))
+		{
+			final long currentExp = getExp();
+			final long nextLevelExp = ExperienceData.getInstance().getExpForLevel(player.getLevel() + 1);
+
+			// If player is at max level or would overflow, award talent points
+			if (currentExp >= nextLevelExp)
+			{
+				final long expForTalentPoint = nextLevelExp - ExperienceData.getInstance().getExpForLevel(player.getLevel());
+				final long totalExp = currentExp + value;
+				final long expOverMax = totalExp - nextLevelExp;
+
+				if (expOverMax >= expForTalentPoint)
+				{
+					final int talentPoints = (int) (expOverMax / expForTalentPoint);
+					if (talentPoints > 0)
+					{
+						for (int i = 0; i < talentPoints; i++)
+						{
+							player.getTalentHolder().addPendingTalentPoint();
+						}
+
+						// Send notification
+						final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1_EXPERIENCE_AND_S2_SP);
+						sm.addInt(0); // No exp shown as it's converted to talent points
+						sm.addInt(talentPoints);
+						player.sendPacket(sm);
+						player.sendMessage("You have earned " + talentPoints + " Talent Point(s)! Use the Talent Tree to claim them.");
+					}
+				}
+			}
+		}
+
 		if (!super.addExp(value))
 		{
 			return false;
 		}
-		
+
 		// Set new karma
 		if (!player.isCursedWeaponEquipped() && (player.getKarma() > 0) && !player.isInsideZone(ZoneId.PVP))
 		{
@@ -111,7 +145,7 @@ public class PlayerStat extends PlayableStat
 				player.sendPacket(msg);
 			}
 		}
-		
+
 		// EXP status update currently not used in retail
 		player.updateUserInfo();
 		return true;
@@ -997,5 +1031,17 @@ public class PlayerStat extends PlayableStat
 	public double getBonusSpoilRateMultiplier()
 	{
 		return 1 + (calcStat(Stat.BONUS_SPOIL_RATE, 0, null, null) / 100);
+	}
+
+	@Override
+	public double calcStat(Stat stat, double initVal, com.l2journey.gameserver.model.actor.Creature target, com.l2journey.gameserver.model.skill.Skill skill)
+	{
+		// Apply base stat calculations from parent
+		double value = super.calcStat(stat, initVal, target, skill);
+
+		// Apply talent bonuses on top
+		value = com.l2journey.gameserver.model.talent.TalentStatCalculator.applyTalentBonus(getActiveChar(), stat, value);
+
+		return value;
 	}
 }
