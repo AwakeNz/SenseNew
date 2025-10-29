@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/Talents.xsd">
+	<!-- POWER BRANCH -->
+
+	<!-- POWER - Tier 1 -->
+	<talent id="1" name="Physical Defense" desc="Increases P.Def" branch="POWER" tier="1" maxLevel="5" bonusType="FIXED" stat="POWER_DEFENCE" valuePerLevel="10" percentPerLevel="0" />
+	<talent id="2" name="Magic Defense" desc="Increases M.Def" branch="POWER" tier="1" maxLevel="5" bonusType="FIXED" stat="MAGIC_DEFENCE" valuePerLevel="10" percentPerLevel="0" />
+	<talent id="3" name="Resist Cancel" desc="Increases resistance to cancel skills" branch="POWER" tier="1" maxLevel="5" bonusType="PERCENT" stat="CANCEL_VULN" valuePerLevel="0" percentPerLevel="-0.02" />
+	<talent id="4" name="Maximum HP" desc="Increases Max HP" branch="POWER" tier="1" maxLevel="5" bonusType="FIXED" stat="MAX_HP" valuePerLevel="80" percentPerLevel="0" />
+	<talent id="5" name="Maximum MP" desc="Increases Max MP" branch="POWER" tier="1" maxLevel="5" bonusType="FIXED" stat="MAX_MP" valuePerLevel="160" percentPerLevel="0" />
+	<talent id="6" name="Maximum CP" desc="Increases Max CP" branch="POWER" tier="1" maxLevel="5" bonusType="FIXED" stat="MAX_CP" valuePerLevel="240" percentPerLevel="0" />
+
+	<!-- POWER - Tier 2 -->
+	<talent id="7" name="Stun Attack" desc="Increases Stun attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="SHOCK" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="8" name="Paralyze Attack" desc="Increases Paralyze attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="PARALYZE" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="9" name="Bleed/Poison Attack" desc="Increases Bleed and Poison attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="BLEED" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="10" name="Sleep Attack" desc="Increases Sleep attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="SLEEP" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="11" name="Mental Attack" desc="Increases Mental attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="DERANGEMENT" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="12" name="Hold Attack" desc="Increases Hold attack effectiveness" branch="POWER" tier="2" maxLevel="5" bonusType="ATTACK_TRAIT" trait="HOLD" valuePerLevel="0" percentPerLevel="0.02" />
+
+	<!-- POWER - Tier 3 -->
+	<talent id="13" name="Physical Attack" desc="Increases P.Atk" branch="POWER" tier="3" maxLevel="5" bonusType="COMBINED" stat="POWER_ATTACK" valuePerLevel="40" percentPerLevel="0.01" />
+	<talent id="14" name="Critical Chance" desc="Increases Critical Rate" branch="POWER" tier="3" maxLevel="5" bonusType="FIXED" stat="CRITICAL_RATE" valuePerLevel="10" percentPerLevel="0" />
+	<talent id="15" name="Critical Power" desc="Increases Critical Damage" branch="POWER" tier="3" maxLevel="5" bonusType="PERCENT" stat="CRITICAL_DAMAGE" valuePerLevel="0" percentPerLevel="0.01" />
+	<talent id="16" name="Magic Attack" desc="Increases M.Atk" branch="POWER" tier="3" maxLevel="5" bonusType="COMBINED" stat="MAGIC_ATTACK" valuePerLevel="40" percentPerLevel="0.01" />
+	<talent id="17" name="Magic Critical Chance" desc="Increases Magic Critical Rate" branch="POWER" tier="3" maxLevel="5" bonusType="PERCENT" stat="MCRITICAL_RATE" valuePerLevel="0" percentPerLevel="0.01" />
+	<talent id="18" name="Magic Critical Power" desc="Increases Magic Critical Damage" branch="POWER" tier="3" maxLevel="5" bonusType="PERCENT" stat="MAGIC_CRIT_DMG" valuePerLevel="0" percentPerLevel="0.01" />
+
+	<!-- MASTERY BRANCH -->
+
+	<!-- MASTERY - Tier 1 -->
+	<talent id="19" name="Physical Defense %" desc="Increases P.Def by percentage" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="POWER_DEFENCE" valuePerLevel="0" percentPerLevel="0.006" />
+	<talent id="20" name="Magic Defense %" desc="Increases M.Def by percentage" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="MAGIC_DEFENCE" valuePerLevel="0" percentPerLevel="0.006" />
+	<talent id="21" name="Resist Cancel %" desc="Increases resistance to cancel skills" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="CANCEL_VULN" valuePerLevel="0" percentPerLevel="-0.02" />
+	<talent id="22" name="Maximum HP %" desc="Increases Max HP by percentage" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="MAX_HP" valuePerLevel="0" percentPerLevel="0.008" />
+	<talent id="23" name="Maximum MP %" desc="Increases Max MP by percentage" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="MAX_MP" valuePerLevel="0" percentPerLevel="0.016" />
+	<talent id="24" name="Maximum CP %" desc="Increases Max CP by percentage" branch="MASTERY" tier="1" maxLevel="5" bonusType="PERCENT" stat="MAX_CP" valuePerLevel="0" percentPerLevel="0.024" />
+
+	<!-- MASTERY - Tier 2 -->
+	<talent id="25" name="Clarity" desc="Increases Skill Mastery chance" branch="MASTERY" tier="2" maxLevel="5" bonusType="PERCENT" stat="SKILL_MASTERY_RATE" valuePerLevel="0" percentPerLevel="0.01" />
+	<talent id="26" name="Vampiric" desc="Increases HP absorption from attacks" branch="MASTERY" tier="2" maxLevel="5" bonusType="SPECIAL" valuePerLevel="0" percentPerLevel="0.01" />
+	<talent id="27" name="Reflect" desc="Increases damage reflection" branch="MASTERY" tier="2" maxLevel="5" bonusType="PERCENT" stat="REFLECT_DAMAGE_PERCENT" valuePerLevel="0" percentPerLevel="0.04" />
+	<talent id="28" name="Bow Range" desc="Increases bow attack range" branch="MASTERY" tier="2" maxLevel="5" bonusType="FIXED" stat="POWER_ATTACK_RANGE" valuePerLevel="10" percentPerLevel="0" />
+	<talent id="29" name="Concentration" desc="Increases accuracy" branch="MASTERY" tier="2" maxLevel="5" bonusType="FIXED" stat="ACCURACY_COMBAT" valuePerLevel="20" percentPerLevel="0" />
+	<talent id="30" name="Prayer" desc="Increases healing effectiveness" branch="MASTERY" tier="2" maxLevel="5" bonusType="PERCENT" stat="HEAL_EFFECT" valuePerLevel="0" percentPerLevel="0.04" />
+
+	<!-- MASTERY - Tier 3 -->
+	<talent id="31" name="Attack Speed" desc="Increases Physical Attack Speed" branch="MASTERY" tier="3" maxLevel="5" bonusType="COMBINED" stat="POWER_ATTACK_SPEED" valuePerLevel="10" percentPerLevel="0.006" />
+	<talent id="32" name="Cast Speed" desc="Increases Magic Casting Speed" branch="MASTERY" tier="3" maxLevel="5" bonusType="COMBINED" stat="MAGIC_ATTACK_SPEED" valuePerLevel="10" percentPerLevel="0.006" />
+	<talent id="33" name="Speed" desc="Increases Movement Speed" branch="MASTERY" tier="3" maxLevel="5" bonusType="FIXED" stat="MOVE_SPEED" valuePerLevel="1" percentPerLevel="0" />
+	<talent id="34" name="PvP Attack" desc="Increases PvP Attack Damage" branch="MASTERY" tier="3" maxLevel="5" bonusType="PERCENT" stat="PVP_PHYSICAL_DMG" valuePerLevel="0" percentPerLevel="0.006" />
+	<talent id="35" name="PvP Defense" desc="Increases PvP Defense" branch="MASTERY" tier="3" maxLevel="5" bonusType="PERCENT" stat="PVP_PHYSICAL_DEF" valuePerLevel="0" percentPerLevel="0.006" />
+	<talent id="36" name="Refresh" desc="Reduces skill reuse time" branch="MASTERY" tier="3" maxLevel="5" bonusType="PERCENT" stat="MAGIC_REUSE_RATE" valuePerLevel="0" percentPerLevel="0.01" />
+
+	<!-- PROTECTION BRANCH -->
+
+	<!-- PROTECTION - Tier 1 -->
+	<talent id="37" name="Resist Fire" desc="Increases Fire Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="FIRE_RES" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="38" name="Resist Water" desc="Increases Water Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="WATER_RES" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="39" name="Resist Wind" desc="Increases Wind Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="WIND_RES" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="40" name="Resist Earth" desc="Increases Earth Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="EARTH_RES" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="41" name="Resist Unholy" desc="Increases Dark Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="DARK_RES" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="42" name="Resist Holy" desc="Increases Holy Resistance" branch="PROTECTION" tier="1" maxLevel="5" bonusType="PERCENT" stat="HOLY_RES" valuePerLevel="0" percentPerLevel="0.02" />
+
+	<!-- PROTECTION - Tier 2 -->
+	<talent id="43" name="Resist Stun" desc="Increases Stun Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="SHOCK" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="44" name="Resist Paralyze" desc="Increases Paralyze Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="PARALYZE" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="45" name="Resist Bleed/Poison" desc="Increases Bleed and Poison Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="BLEED" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="46" name="Resist Sleep" desc="Increases Sleep Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="SLEEP" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="47" name="Resist Mental" desc="Increases Mental Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="DERANGEMENT" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="48" name="Resist Root" desc="Increases Root Resistance" branch="PROTECTION" tier="2" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="ROOT_PHYSICALLY" valuePerLevel="0" percentPerLevel="0.02" />
+
+	<!-- PROTECTION - Tier 3 -->
+	<talent id="49" name="Sword Resistance" desc="Reduces damage from swords" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="SWORD" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="50" name="Dagger Resistance" desc="Reduces damage from daggers" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="DAGGER" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="51" name="Fist/Dual Resistance" desc="Reduces damage from fists and dual weapons" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="FIST" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="52" name="Blunt Resistance" desc="Reduces damage from blunt weapons" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="BLUNT" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="53" name="Polearm Resistance" desc="Reduces damage from polearms" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="POLE" valuePerLevel="0" percentPerLevel="0.02" />
+	<talent id="54" name="Bow Resistance" desc="Reduces damage from bows" branch="PROTECTION" tier="3" maxLevel="5" bonusType="DEFENCE_TRAIT" trait="BOW" valuePerLevel="0" percentPerLevel="0.02" />
+</list>
