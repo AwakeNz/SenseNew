@@ -348,7 +348,7 @@ public class TalentBoard implements IParseBoardHandler
 		// Points display
 		html.append("<tr><td width=250 align=center>Available Points: <font color=\"00FF00\">").append(player.getTalentHolder().getAvailableTalentPoints()).append("</font></td>");
 		html.append("<td width=250 align=center>Pending Points: <font color=\"FFFF00\">").append(player.getTalentHolder().getPendingTalentPoints()).append("</font></td>");
-		html.append("<td width=250 align=center>Total Spent: <font color=\"LEVEL\">").append(tree.getTotalSpentPoints()).append("/90</font></td></tr>");
+		html.append("<td width=250 align=center>Total Spent: <font color=\"LEVEL\">").append(tree.getTotalSpentPoints()).append("/45</font></td></tr>");
 		html.append("</table><br>");
 
 		// Claim/Reset buttons
@@ -364,7 +364,7 @@ public class TalentBoard implements IParseBoardHandler
 			html.append("<table width=750 border=0 cellpadding=5 cellspacing=0 bgcolor=333333>");
 			html.append("<tr><td width=500>");
 			html.append("<font color=\"LEVEL\">").append(branch.getName()).append(" Branch</font><br>");
-			html.append("<font color=\"B09878\">Points Spent: ").append(spent).append("/30</font>");
+			html.append("<font color=\"B09878\">Points Spent: ").append(spent).append("/15</font>");
 			html.append("</td>");
 			html.append("<td width=250 align=center>");
 			html.append("<button value=\"View Talents\" action=\"bypass _bbstalent_branch ").append(branch.name().toLowerCase()).append("\" width=120 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
@@ -386,7 +386,7 @@ public class TalentBoard implements IParseBoardHandler
 		html.append("<font color=\"LEVEL\">").append(branch.getName()).append(" Branch</font><br1>");
 		html.append("<table width=750>");
 		html.append("<tr><td width=250>Available Points: <font color=\"00FF00\">").append(player.getTalentHolder().getAvailableTalentPoints()).append("</font></td>");
-		html.append("<td width=250>Branch Spent: <font color=\"LEVEL\">").append(tree.getSpentPoints(branch)).append("/30</font></td>");
+		html.append("<td width=250>Branch Spent: <font color=\"LEVEL\">").append(tree.getSpentPoints(branch)).append("/15</font></td>");
 		html.append("<td width=250><button value=\"Back\" action=\"bypass _bbstalent\" width=75 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr>");
 		html.append("</table><br>");
 

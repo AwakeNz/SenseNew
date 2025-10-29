@@ -7,7 +7,7 @@ This document describes the implementation of the Talent Tree system for L2Journ
 
 ### Functional Requirements
 - **3rd Profession Requirement**: Talents available after 3rd class change
-- **90 Total Talent Points**: 30 points per branch (Power, Mastery, Protection)
+- **45 Total Talent Points**: 15 points per branch (Power, Mastery, Protection)
 - **3 Branches × 3 Tiers × 6 Talents** = 54 total talents
 - **Tier Unlocking**: Requires 10 points in previous tier to unlock next tier
 - **Max 5 Points per Talent**

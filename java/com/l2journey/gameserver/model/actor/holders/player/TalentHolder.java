@@ -24,6 +24,9 @@ public class TalentHolder
 {
 	private static final Logger LOGGER = Logger.getLogger(TalentHolder.class.getName());
 
+	// Max points per branch (15 × 3 branches = 45 total)
+	public static final int MAX_POINTS_PER_BRANCH = 15;
+
 	// SQL Queries
 	private static final String RESTORE_TALENTS = "SELECT talent_id, talent_level FROM character_talents WHERE charId=? AND class_index=?";
 	private static final String RESTORE_TALENT_POINTS = "SELECT available_points, spent_power, spent_mastery, spent_protection, pending_points FROM character_talent_points WHERE charId=?";
@@ -257,6 +260,13 @@ public class TalentHolder
 
 		// Check if player has enough points
 		if (_availableTalentPoints <= 0)
+		{
+			return false;
+		}
+
+		// Check if branch has reached max points (15 per branch)
+		final int branchPoints = tree.getSpentPoints(talent.getBranch());
+		if (branchPoints >= MAX_POINTS_PER_BRANCH)
 		{
 			return false;
 		}

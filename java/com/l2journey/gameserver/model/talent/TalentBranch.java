@@ -2,7 +2,7 @@ package com.l2journey.gameserver.model.talent;
 
 /**
  * Enum representing the three talent branches available to players.
- * Each branch contains 30 talent points worth of abilities across 3 tiers.
+ * Each branch contains 15 talent points worth of abilities across 3 tiers.
  */
 public enum TalentBranch
 {
