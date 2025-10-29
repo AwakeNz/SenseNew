@@ -998,4 +998,16 @@ public class PlayerStat extends PlayableStat
 	{
 		return 1 + (calcStat(Stat.BONUS_SPOIL_RATE, 0, null, null) / 100);
 	}
+
+	@Override
+	public double calcStat(Stat stat, double initVal, com.l2journey.gameserver.model.actor.Creature target, com.l2journey.gameserver.model.skill.Skill skill)
+	{
+		// Apply base stat calculations from parent
+		double value = super.calcStat(stat, initVal, target, skill);
+
+		// Apply talent bonuses on top
+		value = com.l2journey.gameserver.model.talent.TalentStatCalculator.applyTalentBonus(getActiveChar(), stat, value);
+
+		return value;
+	}
 }

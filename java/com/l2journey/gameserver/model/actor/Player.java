@@ -157,6 +157,7 @@ import com.l2journey.gameserver.model.actor.holders.player.MovieHolder;
 import com.l2journey.gameserver.model.actor.holders.player.Shortcut;
 import com.l2journey.gameserver.model.actor.holders.player.Shortcuts;
 import com.l2journey.gameserver.model.actor.holders.player.SubClassHolder;
+import com.l2journey.gameserver.model.actor.holders.player.TalentHolder;
 import com.l2journey.gameserver.model.actor.instance.AirShip;
 import com.l2journey.gameserver.model.actor.instance.Boat;
 import com.l2journey.gameserver.model.actor.instance.ClassMaster;
@@ -600,6 +601,9 @@ public class Player extends Playable
 	private final PlayerFreight _freight = new PlayerFreight(this);
 	private final PlayerWarehouse _warehouse = new PlayerWarehouse(this);
 	private PlayerRefund _refund;
+
+	/** Talent system holder */
+	private final TalentHolder _talentHolder = new TalentHolder(this);
 	
 	private PrivateStoreType _privateStoreType = PrivateStoreType.NONE;
 	
@@ -2987,7 +2991,16 @@ public class Player extends Playable
 	{
 		return _inventory;
 	}
-	
+
+	/**
+	 * Return the TalentHolder of the Player.
+	 * @return the talent holder
+	 */
+	public TalentHolder getTalentHolder()
+	{
+		return _talentHolder;
+	}
+
 	/**
 	 * Delete a Shortcut of the Player _shortcuts.
 	 * @param objectId
@@ -7468,33 +7481,37 @@ public class Player extends Playable
 	{
 		// Retrieve from the database all skills of this Player and add them to _skills.
 		restoreSkills();
-		
+
 		// Retrieve from the database all macroses of this Player and add them to _macros.
 		_macros.restoreMe();
-		
+
 		// Retrieve from the database all shortcuts of this Player and add them to _shortcuts.
 		_shortcuts.restoreMe();
-		
+
 		// Retrieve from the database all henna of this Player and add them to _henna.
 		restoreHenna();
-		
+
 		// Retrieve from the database all teleport bookmark of this Player and add them to _tpbookmark.
 		restoreTeleportBookmark();
-		
+
 		// Retrieve from the database the recipe book of this Player.
 		restoreRecipeBook(true);
-		
+
 		// Restore Recipe Shop list.
 		if (Config.STORE_RECIPE_SHOPLIST)
 		{
 			restoreRecipeShopList();
 		}
-		
+
 		// Load Premium Item List.
 		loadPremiumItemList();
-		
+
 		// Restore items in pet inventory.
 		restorePetInventoryItems();
+
+		// Restore talent points and talents for current class.
+		_talentHolder.restoreTalentPoints();
+		_talentHolder.restoreTalents();
 	}
 	
 	/**
@@ -7644,8 +7661,12 @@ public class Player extends Playable
 		getInventory().updateDatabase();
 		getWarehouse().updateDatabase();
 		getFreight().updateDatabase();
+
+		// Store talent points and talents for current class.
+		_talentHolder.storeTalentPoints();
+		_talentHolder.storeTalents();
 	}
-	
+
 	@Override
 	public void storeMe()
 	{
@@ -10812,7 +10833,10 @@ public class Player extends Playable
 			rewardSkills();
 			regiveTemporarySkills();
 			getInventory().applyItemSkills();
-			
+
+			// Restore talents for the new class
+			_talentHolder.restoreTalents();
+
 			// Prevents some issues when changing between subclases that shares skills
 			resetDisabledSkills();
 			
